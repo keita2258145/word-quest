@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Word Quest - Game</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+
+<!-- BACKGROUND WORDS -->
+<div class="bg-words" id="bgWords"></div>
+
+<!-- HEADER -->
+<div class="top-bar">
+
+    <div class="user-box">
+        ⚔️ <span id="charNameTop">Player</span>
+    </div>
+
+    <div class="stats">
+        ⭐ <span id="score">0</span>
+    </div>
+
+    <div class="stats">
+        🪙 <span id="coins">0</span>
+    </div>
+
+    <button class="icon-btn">❓</button>
+    <button class="icon-btn">⚙️</button>
+
+</div>
+
+<!-- MAIN -->
+<div class="center-panel">
+
+    <div class="hero-card">
+
+        <div class="avatar">⚔️</div>
+
+        <h2 id="charNameMain">Player</h2>
+
+        <p class="status">
+            นักผจญภัยฝึกหัด
+        </p>
+
+        <div class="progress-box">
+
+            <div class="progress-text">
+                ⭐ Level Progress
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+
+        </div>
+
+        <button class="start-btn" onclick="openQuest()">
+            เริ่มภารกิจ
+        </button>
+
+    </div>
+
+</div>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+
+    <button onclick="openRank()">🏆<br>อันดับ</button>
+
+    <button onclick="dailyLogin()">🎁<br>รายวัน</button>
+
+    <button class="quest-btn" onclick="openQuest()">⚔️<br>เควส</button>
+
+    <button onclick="openVocab()">📚<br>ความรู้</button>
+
+    <button onclick="openShop()">🛒<br>ร้านค้า</button>
+
+</div>
+
+<script type="module" src="game.js"></script>
+
+</body>
+</html>

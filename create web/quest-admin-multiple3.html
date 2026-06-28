@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ตั้งค่าเควส</title>
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="top-bar top-bar--page">
+    <button id="backBtn" class="back-btn" type="button" onclick="location.href='quest-admin-multiple2.html'">← ย้อนกลับ</button>
+    <div class="top-bar__title">🧠 เลือกคำตอบ</div>
+    <div class="top-bar__spacer"></div>
+  </div>
+
+<div class="center-panel">
+  <div class="hero-card">
+
+    <h2>⚙️ ตั้งค่าเควส</h2>
+
+    <form id="configForm">
+      <label>ชื่อเควส</label>
+<input
+  id="titleInput"
+  type="text"
+  placeholder="เช่น คำศัพท์ภาษาอังกฤษชิวๆ"
+  required
+>
+
+      <label>เวลาจำกัดทั้งเควส (นาที)</label>
+<input id="timeInput" type="number" min="1" value="10" required>
+
+      <label>แต้มต่อคำถาม</label>
+      <input id="pointsInput" type="number" min="1" value="10" required>
+
+      <label>จำนวนรอบที่ผู้เล่นเล่นได้</label>
+      <input id="attemptsInput" type="number" min="1" value="1" required>
+
+      <label>วันที่เปิดให้เล่นจนถึง</label>
+      <input id="activeUntilInput" type="datetime-local" required>
+
+      <button type="submit" class="mode-btn">
+        บันทึกเควส
+      </button>
+
+    </form>
+
+    <div id="messageBox"></div>
+
+  </div>
+</div>
+
+<script type="module" src="quest-admin-multiple3.js"></script>
+
+</body>
+</html>

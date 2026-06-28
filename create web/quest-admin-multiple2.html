@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ตรวจสอบคำถาม</title>
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+
+<div class="center-panel">
+  <div class="hero-card">
+
+    <h2>📋 ตรวจสอบและแก้ไขคำถาม</h2>
+
+    <div id="questionList"></div>
+
+    <div class="review-actions">
+
+  <button
+    class="back-btn"
+    onclick="location.href='quest-admin-multiple.html'">
+    ← ย้อนกลับ
+  </button>
+
+  <button id="nextBtn" class="mode-btn">
+    ไปตั้งค่า →
+  </button>
+
+</div>
+
+  </div>
+</div>
+
+<script>
+
+let questions = [];
+
+try {
+  questions = JSON.parse(sessionStorage.getItem("pendingQuestions")) || [];
+} catch (e) {
+  questions = [];
+}
+
+if (!questions.length) {
+  location.href = "quest-admin-multiple.html";
+}
+
+const list = document.getElementById("questionList");
+
+/* ================= SAFE VALUE ================= */
+
+function safe(val) {
+  return (val ?? "").toString()
+    .replaceAll('"', '&quot;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;');
+}
+
+/* ================= SAVE ================= */
+
+function saveQuestions() {
+  sessionStorage.setItem(
+    "pendingQuestions",
+    JSON.stringify(questions)
+  );
+}
+
+/* ================= RENDER ================= */
+
+function renderQuestions() {
+
+  list.innerHTML = "";
+
+  questions.forEach((q, i) => {
+
+    const div = document.createElement("div");
+    div.className = "question-preview";
+    div.style.marginBottom = "20px";
+
+    div.innerHTML = `
+      <h4>ข้อ ${i + 1}</h4>
+
+      <input type="text" value="${safe(q.question)}" data-i="${i}" data-key="question"><br><br>
+
+      <input type="text" value="${safe(q.options?.[0])}" data-i="${i}" data-opt="0"><br>
+      <input type="text" value="${safe(q.options?.[1])}" data-i="${i}" data-opt="1"><br>
+      <input type="text" value="${safe(q.options?.[2])}" data-i="${i}" data-opt="2"><br>
+      <input type="text" value="${safe(q.options?.[3])}" data-i="${i}" data-opt="3"><br><br>
+
+      <select data-i="${i}" data-key="correct">
+        <option value="1" ${q.correct==1?"selected":""}>ตัวเลือก 1</option>
+        <option value="2" ${q.correct==2?"selected":""}>ตัวเลือก 2</option>
+        <option value="3" ${q.correct==3?"selected":""}>ตัวเลือก 3</option>
+        <option value="4" ${q.correct==4?"selected":""}>ตัวเลือก 4</option>
+      </select>
+
+      <br><br>
+
+      <textarea data-i="${i}" data-key="explanation">${safe(q.explanation)}</textarea>
+
+      <br><br>
+
+      <button type="button" class="delete-btn" data-delete="${i}">
+        🗑️ ลบข้อนี้
+      </button>
+
+      <hr>
+    `;
+
+    list.appendChild(div);
+  });
+
+  attachEvents();
+}
+
+/* ================= EVENTS ================= */
+
+function attachEvents() {
+
+  list.querySelectorAll("input, textarea, select").forEach(el => {
+
+    el.onchange = () => {
+
+      const i = Number(el.dataset.i);
+
+      if (el.dataset.key === "question") {
+        questions[i].question = el.value;
+      }
+
+      if (el.dataset.key === "correct") {
+        questions[i].correct = Number(el.value);
+      }
+
+      if (el.dataset.key === "explanation") {
+        questions[i].explanation = el.value;
+      }
+
+      if (el.dataset.opt !== undefined) {
+        const idx = Number(el.dataset.opt);
+        questions[i].options[idx] = el.value;
+      }
+
+      saveQuestions();
+    };
+  });
+
+  list.querySelectorAll("[data-delete]").forEach(btn => {
+
+    btn.onclick = () => {
+
+      const i = Number(btn.dataset.delete);
+
+      if (!confirm("ลบคำถามข้อนี้?")) return;
+
+      questions.splice(i, 1);
+
+      saveQuestions();
+      renderQuestions();
+    };
+  });
+}
+
+/* ================= NEXT (FIXED FLOW) ================= */
+
+document.getElementById("nextBtn").onclick = () => {
+
+  saveQuestions();
+
+  // 🔥 เปลี่ยน flow: ไปหน้าตั้งค่า
+  location.href = "quest-admin-multiple3.html";
+};
+
+renderQuestions();
+
+</script>

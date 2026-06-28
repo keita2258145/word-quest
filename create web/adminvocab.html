@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Vocabulary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="game.css" />
+  <link rel="stylesheet" href="vocab.css" />
+</head>
+<body>
+  <div class="top-bar top-bar--page top-bar--admin">
+    <button id="backBtn" class="back-btn" type="button" onclick="history.back()">← ย้อนกลับ</button>
+    <div class="top-bar__title">🛠️ Admin</div>
+    <div class="top-bar__spacer"></div>
+  </div>
+
+  <div class="center-panel">
+    <div class="hero-card vocab-shell">
+      <div class="page-header">
+        <h2>จัดการคำศัพท์</h2>
+        <p>เพิ่มคำศัพท์ใหม่หรือลบคำที่ไม่ต้องการได้ที่นี่</p>
+      </div>
+
+      <form id="addWordForm" class="add-form">
+        <input id="wordInput" type="text" placeholder="คำศัพท์" required />
+        <input id="typeInput" type="text" placeholder="ชนิดของคำ" required />
+        <input id="meaningInput" type="text" placeholder="คำแปล" required />
+        <textarea id="noteInput" rows="3" placeholder="ตัวอย่างประโยค"></textarea>
+        <textarea id="sentenceMeaningInput" rows="2" placeholder="คำแปลประโยค"></textarea>
+        <button type="submit" class="submit-btn">➕ เพิ่มคำศัพท์</button>
+      </form>
+
+      <div id="messageBox" class="message-box"></div>
+
+      <div class="list-title">คำศัพท์ที่มีอยู่</div>
+      <div id="wordList" class="word-list">Loading...</div>
+    </div>
+  </div>
+
+  <script type="module" src="adminvocab.js"></script>
+</body>
+</html>

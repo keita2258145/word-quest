@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Daily Reward</title>
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+
+<div class="top-bar top-bar--page">
+  <button id="backBtn" class="back-btn" type="button" onclick="history.back()">← ย้อนกลับ</button>
+  <div class="top-bar__title">📅 Daily Reward</div>
+  <div class="top-bar__spacer"></div>
+</div>
+
+<div class="center-panel">
+  <div class="hero-card">
+
+    <h2>Daily Reward</h2>
+
+    <button onclick="claim()">รับรางวัลวันนี้</button>
+
+    <p id="status"></p>
+
+  </div>
+</div>
+
+<script type="module" src="daily.js"></script>
+</body>
+</html>
