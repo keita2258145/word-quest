@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Word Quest</title>
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100dvh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#4F46E5,#7C3AED);
+    overflow:hidden;
+    padding:12px;
+}
+
+.bg-circle{
+    position:fixed;
+    border-radius:50%;
+    background:rgba(255,255,255,0.1);
+    pointer-events:none;
+    z-index:0;
+}
+.circle1{
+    width:250px;
+    height:250px;
+    top:-50px;
+    left:-50px;
+}
+.circle2{
+    width:300px;
+    height:300px;
+    bottom:-100px;
+    right:-100px;
+}
+
+.container{
+    width:90%;
+    max-width:400px;
+    background:white;
+    padding:35px 30px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+}
+
+.logo{
+    text-align:center;
+    font-size:48px;
+}
+
+.game-title{
+    text-align:center;
+    font-size:34px;
+    font-weight:800;
+    color:#4F46E5;
+    margin-top:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#777;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.login-title{
+    text-align:center;
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    text-align:left;
+    margin-bottom:8px;
+    font-weight:600;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    border:2px solid #e5e7eb;
+    border-radius:14px;
+    margin-bottom:18px;
+    font-size:15px;
+    transition:0.3s;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:#7C3AED;
+}
+
+.signup-btn{
+    width:100%;
+    padding:14px;
+    border:2px solid #7C3AED;
+    background:white;
+    color:#7C3AED;
+    border-radius:14px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    margin-bottom:12px;
+    transition:0.3s;
+}
+
+.signup-btn:hover{
+    background:#f5f3ff;
+}
+
+.login-btn{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#4F46E5,#7C3AED);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.login-btn:hover{
+    transform:translateY(-2px);
+}
+
+.footer{
+    margin-top:20px;
+    color:#888;
+    font-size:13px;
+}
+
+</style>
+</head>
+
+<body class="no-scroll">
+
+<div class="bg-circle circle1"></div>
+<div class="bg-circle circle2"></div>
+
+<div class="container">
+
+    <div class="logo">🏆</div>
+
+    <div class="game-title">Word Quest</div>
+
+    <div class="subtitle">
+        Adventure Through Words
+    </div>
+
+    <div class="login-title">
+        Login
+    </div>
+
+    <label>Username</label>
+    <input
+    id="name"
+    type="text"
+    placeholder="Player Name">
+    <label>Class</label>
+    <select id="grade">
+        <option>ม.1</option>
+        <option>ม.2</option>
+        <option>ม.3</option>
+        <option>ม.4/1</option>
+        <option>ม.4/2</option>
+        <option>ม.4/3</option>
+        <option>ม.4/4</option>
+        <option>ม.5/1</option>
+        <option>ม.5/2</option>
+        <option>ม.5/3</option>
+        <option>ม.5/4</option>
+        <option>ม.6/1</option>
+        <option>ม.6/2</option>
+        <option>ม.6/3</option>
+        <option>ม.6/4</option>
+        <option>ม.6/5</option>
+    </select>
+    <p id="error"
+style="
+display:none;
+color:red;
+font-weight:600;
+margin-bottom:15px;">
+</p>
+<button class="signup-btn" id="signupBtn"
+onclick="window.location.href='signup.html'">
+    Sign Up
+</button>
+
+
+<button class="login-btn" onclick="login()">
+    Login
+</button>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
